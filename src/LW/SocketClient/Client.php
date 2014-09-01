@@ -46,7 +46,7 @@ class Client {
 	 * @param string $value
 	 * @return static
 	 */
-	public function setHostname()
+	public function setHostname($value)
 	{
 		$this->hostname = $value;
 
@@ -84,7 +84,7 @@ class Client {
 	 * @param string $value
 	 * @return static
 	 */
-	public function setScheme()
+	public function setScheme($value)
 	{
 		$this->sheme = $value;
 
