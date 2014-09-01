@@ -113,7 +113,7 @@ class Client {
 	 */
 	public function connect()
 	{
-		$this->client = stream_socket_client($this->stringify(), $err, $errmsg, 30);
+		$this->client = stream_socket_client($this->stringify(), $err, $errmsg, 10);
 
 		if ($err)
 		{
@@ -136,9 +136,14 @@ class Client {
 	 * @param int $offset
 	 * @return string
 	 */
-	public function read($length = -1, $offset = -1)
+	public function read($length = 8024, $offset = 0)
 	{
-		return stream_get_contents($this->client, $offset, $length);
+		if ($offset > 0)
+		{
+			fread($offset);
+		}
+
+		return fread($this->client, $length);
 	}
 
 	/**
