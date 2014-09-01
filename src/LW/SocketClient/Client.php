@@ -102,9 +102,25 @@ class Client {
 	/**
 	 * @return bool
 	 */
+	public function connected()
+	{
+		return !! $this->client;
+	}
+
+	/**
+	 * @return static
+	 * @throws \RuntimeException
+	 */
 	public function connect()
 	{
-		$this->client = stream_socket_client($this->stringify());
+		$this->client = stream_socket_client($this->stringify(), $err, $errmsg, 30);
+
+		if ($err)
+		{
+			throw new \RuntimeException('Legalwebb Socket Client: ' . $errmsg);
+		}
+
+		return $this;
 	}
 
 	/**
