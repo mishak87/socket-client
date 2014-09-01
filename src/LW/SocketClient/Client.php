@@ -43,6 +43,63 @@ class Client {
 	}
 
 	/**
+	 * @param string $value
+	 * @return static
+	 */
+	public function setHostname()
+	{
+		$this->hostname = $value;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getHostname()
+	{
+		return $this->hostname;
+	}
+
+	/**
+	 * @param int $value
+	 * @return static
+	 */
+	public function setPort($value)
+	{
+		$this->port = intval($value);
+
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPort()
+	{
+		return $this->port;
+	}
+
+	/**
+	 * @param string $value
+	 * @return static
+	 */
+	public function setScheme()
+	{
+		$this->sheme = $value;
+
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getScheme()
+	{
+		return $this->scheme;
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function connect()
@@ -88,6 +145,7 @@ class Client {
 	public function close()
 	{
 		fclose($this->client);
+		$this->client = null;
 	}
 
 	/**
@@ -95,7 +153,10 @@ class Client {
 	 */
 	public function __destruct()
 	{
-		$this->close();
+		if (is_resource($this->client))
+		{
+			$this->close();
+		}
 	}
 
 }
