@@ -86,7 +86,7 @@ class Client {
 	 */
 	public function setScheme($value)
 	{
-		$this->sheme = $value;
+		$this->scheme = $value;
 
 		return $this;
 	}
