@@ -29,17 +29,17 @@ class Client {
 	 */
 	public function __construct($hostname = null, $port = null, $scheme = 'tcp')
 	{
-		$this->scheme = $scheme;
-
 		if (! is_null($hostname))
 		{
-			$this->hostname = $hostname;
+			$this->setHostname($hostname);
 		}
 
 		if (! is_null($port))
 		{
-			$this->port = $port;
+			$this->setPort($port);
 		}
+
+		$this->setScheme($scheme);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Client {
 	 */
 	public function stringify()
 	{
-		return $scheme . '://' . $this->hostname . ':' . intval($this->port);
+		return $this->scheme . '://' . $this->hostname . ':' . intval($this->port);
 	}
 
 	/**
