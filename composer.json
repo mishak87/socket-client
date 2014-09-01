@@ -1,0 +1,17 @@
+{
+	"name": "legalweb/socket-client",
+	"description": "Basic Socket Client",
+	"keywords": ["Basic", "Socket", "Client"],
+	"authors": [
+		{
+			"name": "Bradley Weston",
+			"homepage": "http://bweston.me",
+			"email": "me@bweston.me"
+		}
+	],
+	"autoload": {
+		"psr-0": {
+			"LW\\SocketClient": "src"
+		}
+	}
+}
